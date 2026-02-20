@@ -56,13 +56,13 @@ export default function Contact() {
         <section className={styles.extraInfo} aria-label="Additional contact information">
           <p className={styles.extraLine}>
             Phone:{' '}
-            <a href={`tel:${phone.replace(/\s+/g, '')}`} className={styles.extraLink}>
+            <a href={`tel:${phone.replace(/\s+/g, '')}`} className={styles.email}>
               {phone}
             </a>
           </p>
           <p className={styles.extraLine}>
             LinkedIn:{' '}
-            <a href={linkedin} target="_blank" rel="noreferrer" className={styles.extraLink}>
+            <a href={linkedin} target="_blank" rel="noreferrer" className={styles.email}>
               View profile
             </a>
           </p>
