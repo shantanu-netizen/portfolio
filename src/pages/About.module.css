@@ -1,70 +1,42 @@
-/* About page – variables */
+/* =============================================================================
+   About Page – Variables
+   ============================================================================= */
 .page {
   --about-radius: 14px;
 }
 
-/* Page wrapper */
+/* =============================================================================
+   Page Layout
+   ============================================================================= */
 .page {
   min-height: 100vh;
   background: var(--bg-page);
+  padding-top: 0;
   padding-bottom: 4rem;
 }
 
-/* Main about section */
+/* =============================================================================
+   Main About Section (Grid)
+   ============================================================================= */
 .about {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
   gap: clamp(2rem, 4vw, 3.5rem);
   align-items: start;
-  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 3rem) clamp(2.5rem, 5vw, 4rem);
+  padding: 0 clamp(1.5rem, 4vw, 3rem) clamp(2.5rem, 5vw, 4rem);
+  padding-top: 0.75rem;
   max-width: 1200px;
   margin-left: 140px;
+  margin-top: 0;
   animation: fadeIn 0.7s ease-out;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .about {
-    animation: none;
-  }
-
-  .details,
-  .skills {
-    animation: none;
-  }
-}
-
-/* Details block */
-.details {
-  margin-top: 60px;
-  animation: slideInLeft 0.85s ease-out 0.1s both;
-  background: var(--bg-card-soft);
-  backdrop-filter: blur(12px);
-  padding: clamp(1.5rem, 3vw, 2rem);
-  border-radius: var(--about-radius);
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border-subtle);
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* -----------------------------------------------------------------------------
+   About Header (subtitle + title)
+   ----------------------------------------------------------------------------- */
+.aboutHeader {
+  grid-column: 1 / -1;
 }
 
 .subtitle {
@@ -85,10 +57,25 @@
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 1.25rem;
+  margin-bottom: 0;
+  margin-top: 0;
   line-height: 1.25;
   font-family: 'Segoe UI', system-ui, sans-serif;
   letter-spacing: -0.02em;
+}
+
+/* =============================================================================
+   Details Card (Bio + Read more)
+   ============================================================================= */
+.details {
+  margin-top: 60px;
+  animation: slideInLeft 0.85s ease-out 0.1s both;
+  background: var(--bg-card-soft);
+  backdrop-filter: blur(12px);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border-radius: var(--about-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-subtle);
 }
 
 .bio {
@@ -96,7 +83,7 @@
   line-height: 1.75;
   color: var(--text-secondary);
   font-family: 'Segoe UI', Verdana, sans-serif;
-  margin-bottom: 1.25rem;
+  margin: 0 0 1.25rem;
   max-width: 52ch;
 }
 
@@ -110,7 +97,11 @@
   border-radius: 10px;
   cursor: pointer;
   font-family: 'Segoe UI', system-ui, sans-serif;
-  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
 }
 
 .readMoreBtn:hover {
@@ -129,7 +120,9 @@
   outline-offset: 2px;
 }
 
-/* Skills block */
+/* =============================================================================
+   Skills Card
+   ============================================================================= */
 .skills {
   margin-top: 50px;
   animation: slideInRight 0.85s ease-out 0.2s both;
@@ -141,23 +134,12 @@
   border: 1px solid var(--border-subtle);
 }
 
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 .skillsTitle {
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   color: var(--accent);
-  margin-bottom: 1.25rem;
+  margin: 0 0 1.25rem;
   font-family: 'Segoe UI', system-ui, sans-serif;
   text-transform: uppercase;
   padding-bottom: 0.75rem;
@@ -182,7 +164,11 @@
   border-radius: 10px;
   box-shadow: var(--shadow);
   font-family: 'Segoe UI', system-ui, sans-serif;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
   cursor: default;
   border: 1px solid var(--border-subtle);
 }
@@ -196,12 +182,62 @@
   border-color: transparent;
 }
 
-/* Responsive */
+/* =============================================================================
+   Animations
+   ============================================================================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =============================================================================
+   Reduced Motion
+   ============================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .about,
+  .details,
+  .skills {
+    animation: none;
+  }
+}
+
+/* =============================================================================
+   Responsive
+   ============================================================================= */
 @media (max-width: 900px) {
   .about {
     grid-template-columns: 1fr;
     padding: 1.5rem 1.5rem 3rem;
     gap: 2rem;
+    margin-left: 0;
   }
 
   .details {

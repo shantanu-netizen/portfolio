@@ -1,3 +1,9 @@
+/* Ensure body uses theme background (fixes gap/flash in dark mode) */
+body {
+  background: var(--bg-page);
+  min-height: 100vh;
+}
+
 /* Light mode (default) */
 :root,
 [data-theme='light'] {
