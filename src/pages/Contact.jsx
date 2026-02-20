@@ -5,8 +5,14 @@ export default function Contact() {
   const [copied, setCopied] = useState(false)
 
   const email = 'shantanupratap58@gmail.com'
+  const phone = '+91 9528908671'
+  const linkedin = 'https://www.linkedin.com/in/shantanu-pratap-singh-webdev/'
 
   const handleCopyEmail = async () => {
+    if (!navigator?.clipboard) {
+      return
+    }
+
     try {
       await navigator.clipboard.writeText(email)
       setCopied(true)
@@ -17,17 +23,25 @@ export default function Contact() {
   }
 
   return (
-    <div className={styles.page}>
-      <div className={styles.wrapper}>
-        <h3 className={styles.subtitle}>GET IN TOUCH</h3>
-        <h2 className={styles.title}>Contact</h2>
+    <main className={styles.page} id="contact" aria-label="Contact Shantanu">
+      <section className={styles.wrapper} aria-labelledby="contact-heading">
+        <header>
+          <p className={styles.subtitle}>GET IN TOUCH</p>
+          <h1 className={styles.title} id="contact-heading">
+            Contact
+          </h1>
+        </header>
+
         <p className={styles.lead}>
           Have a project in mind or want to collaborate? Reach out—I&apos;d love to hear from you.
         </p>
-        <div className={styles.emailBlock}>
+
+        <section className={styles.emailBlock} aria-label="Email contact">
           <span className={styles.emailLabel}>Email</span>
           <div className={styles.emailRow}>
-            <code className={styles.email}>{email}</code>
+            <a href={`mailto:${email}`} className={styles.email}>
+              {email}
+            </a>
             <button
               type="button"
               className={styles.copyBtn}
@@ -37,8 +51,23 @@ export default function Contact() {
               {copied ? 'Copied!' : 'Copy'}
             </button>
           </div>
-        </div>
-      </div>
-    </div>
+        </section>
+
+        <section className={styles.extraInfo} aria-label="Additional contact information">
+          <p className={styles.extraLine}>
+            Phone:{' '}
+            <a href={`tel:${phone.replace(/\s+/g, '')}`} className={styles.extraLink}>
+              {phone}
+            </a>
+          </p>
+          <p className={styles.extraLine}>
+            LinkedIn:{' '}
+            <a href={linkedin} target="_blank" rel="noreferrer" className={styles.extraLink}>
+              View profile
+            </a>
+          </p>
+        </section>
+      </section>
+    </main>
   )
 }
